@@ -97,6 +97,8 @@ module Prismic
       end
 
       def date_parser(json)
+        return Prismic::Fragments::Text.new('') if json['value'].nil? || json['value'].empty?
+
         Prismic::Fragments::Date.new(Time.parse(json['value']))
       end
 
